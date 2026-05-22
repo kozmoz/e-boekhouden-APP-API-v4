@@ -259,19 +259,19 @@
                     {
                       "id": 390720446,
                       "boekDatum": "2025-06-25T00:00:00",
-                      "bedrag": 100.0,
+                      "bedrag": 100,
                       "omschrijving": "Moved EUR from BTW"
                     },
                     {
                       "id": 390720448,
                       "boekDatum": "2025-06-24T00:00:00",
-                      "bedrag": 1000.0,
+                      "bedrag": 1000,
                       "omschrijving": "Moved EUR from BTW"
                     },
                     {
                       "id": 390720450,
                       "boekDatum": "2025-06-23T00:00:00",
-                      "bedrag": 1600.0,
+                      "bedrag": 1600,
                       "omschrijving": "Moved EUR from BTW"
                     }
                   ]
@@ -329,7 +329,7 @@
                   "importDatum": "2025-11-24T22:11:51.51",
                   "boekDatum": "2025-06-25T00:00:00",
                   "rekeningNummer": "",
-                  "bedrag": 100.0,
+                  "bedrag": 100,
                   "omschrijving": "Moved EUR from BTW"
                 }
               }
@@ -949,8 +949,8 @@
                     {
                       "code": "LAAG_INK",
                       "omschrijving": "Btw laag 6%",
-                      "rekenpercentage": 6.0,
-                      "percentage": 6.0,
+                      "rekenpercentage": 6,
+                      "percentage": 6,
                       "percentageDisplayName": "6%",
                       "einddatum": "2019-01-01T00:00:00",
                       "volgorde": 20
@@ -958,16 +958,16 @@
                     {
                       "code": "LAAG_INK_9",
                       "omschrijving": "Btw laag 9%",
-                      "rekenpercentage": 9.0,
-                      "percentage": 9.0,
+                      "rekenpercentage": 9,
+                      "percentage": 9,
                       "percentageDisplayName": "9%",
                       "volgorde": 21
                     },
                     {
                       "code": "HOOG_INK_21",
                       "omschrijving": "Btw hoog 21%",
-                      "rekenpercentage": 21.0,
-                      "percentage": 21.0,
+                      "rekenpercentage": 21,
+                      "percentage": 21,
                       "percentageDisplayName": "21%",
                       "volgorde": 31
                     }
@@ -1406,15 +1406,15 @@
                 "example": {
                   "mutatieRegels": [
                     {
-                      "bedragInclusief": 200.0,
-                      "bedragExclusief": 200.0,
+                      "bedragInclusief": 200,
+                      "bedragExclusief": 200,
                       "btwCodeDisplayName": "Geen btw",
                       "tegenrekeningDisplayName": "9010 - Managements fee",
                       "index": 0,
                       "tegenRekeningId": 11435893,
                       "btwCode": "GEEN",
-                      "bedrag": 200.0,
-                      "btw": 0.0,
+                      "bedrag": 200,
+                      "btw": 0,
                       "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
                     }
                   ],
@@ -1427,7 +1427,7 @@
                   "factuurNummer": "",
                   "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
                   "datum": "2026-05-14T00:00:00",
-                  "bedrag": 0.0,
+                  "bedrag": 0,
                   "boekstuk": "",
                   "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                   "soort": 6
@@ -1475,6 +1475,33 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Captured failed renew response when previousToken is invalid/expired",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lockoutMinutes": {
+                      "nullable": true
+                    },
+                    "errorType": {
+                      "type": "string"
+                    },
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "lockoutMinutes": null,
+                  "errorType": "AppRenewFailed",
+                  "message": "Ongeldige of verlopen sessie."
+                }
+              }
+            }
           }
         },
         "security": [],
@@ -1487,19 +1514,28 @@
                 "properties": {
                   "username": "REDACTED",
                   "password": "REDACTED",
-                  "previousToken": "REDACTED"
+                  "previousToken": "REDACTED",
+                  "$id": {
+                    "type": "string"
+                  }
                 },
-                "additionalProperties": true
+                "additionalProperties": true,
+                "required": [
+                  "username",
+                  "password",
+                  "previousToken"
+                ]
               },
               "example": {
                 "$id": "1",
-                "username": "REDACTED",
-                "password": "REDACTED",
-                "previousToken": "REDACTED"
+                "username": "<redacted>",
+                "password": "<redacted>",
+                "previousToken": "<redacted>"
               }
             }
           }
-        }
+        },
+        "description": "Renew an existing app session. Fresh install capture shows this can fail with AppRenewFailed when previousToken is invalid/expired; use /api/v4/auth/login for first login."
       }
     },
     "/api/v4/bestanden/bulkMove": {
@@ -2015,7 +2051,7 @@
                       "grootboekRekeningCode": "1008",
                       "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
                       "datum": "2026-05-14T00:00:00",
-                      "bedrag": 200.0,
+                      "bedrag": 200,
                       "shortMutatieSoortDisplayValue": "Geld uit",
                       "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                       "soort": 6
@@ -2027,7 +2063,7 @@
                       "grootboekRekeningCode": "1008",
                       "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
                       "datum": "2026-05-14T00:00:00",
-                      "bedrag": 1150.0,
+                      "bedrag": 1150,
                       "shortMutatieSoortDisplayValue": "Geld uit",
                       "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                       "soort": 6
@@ -2039,7 +2075,7 @@
                       "grootboekRekeningCode": "1008",
                       "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
                       "datum": "2026-05-14T00:00:00",
-                      "bedrag": 6000.0,
+                      "bedrag": 6000,
                       "shortMutatieSoortDisplayValue": "Geld uit",
                       "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                       "soort": 6
@@ -2229,7 +2265,7 @@
                       "bedrag": 9.99,
                       "openstaandBedrag": 9.99,
                       "vervaldatum": "2025-02-20T00:00:00",
-                      "betaald": 0.0,
+                      "betaald": 0,
                       "mutatieNummer": 7925,
                       "mutatieFactuurNummer": "123456",
                       "mutatieTermijn": 0,
@@ -2437,7 +2473,7 @@
                       "bedrag": 15681.6,
                       "openstaandBedrag": 15681.6,
                       "vervaldatum": "2026-06-16T00:00:00",
-                      "betaald": 0.0,
+                      "betaald": 0,
                       "mutatieNummer": 9885,
                       "mutatieFactuurNummer": "123456",
                       "mutatieTermijn": 0,
@@ -2609,13 +2645,13 @@
                           "grootboekId": 9381419,
                           "grootboekRekeningCode": "1660",
                           "grootboekRekeningOmschrijving": "Belasting",
-                          "bedragVerlies": 8640.0
+                          "bedragVerlies": 8640
                         },
                         {
                           "grootboekId": 9865419,
                           "grootboekRekeningCode": "4100",
                           "grootboekRekeningOmschrijving": "Managementvergoeding",
-                          "bedragVerlies": 5300.0
+                          "bedragVerlies": 5300
                         }
                       ]
                     }
@@ -2772,15 +2808,15 @@
                 "example": {
                   "mutatieRegels": [
                     {
-                      "bedragInclusief": 200.0,
-                      "bedragExclusief": 200.0,
+                      "bedragInclusief": 200,
+                      "bedragExclusief": 200,
                       "btwCodeDisplayName": "Geen btw",
                       "tegenrekeningDisplayName": "9010 - Managements fee",
                       "index": 0,
                       "tegenRekeningId": 11435893,
                       "btwCode": "GEEN",
-                      "bedrag": 200.0,
-                      "btw": 0.0,
+                      "bedrag": 200,
+                      "btw": 0,
                       "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
                     }
                   ],
@@ -2793,7 +2829,7 @@
                   "factuurNummer": "",
                   "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
                   "datum": "2026-05-14T00:00:00",
-                  "bedrag": 0.0,
+                  "bedrag": 0,
                   "boekstuk": "",
                   "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                   "soort": 6
@@ -2902,7 +2938,7 @@
                 "grootboekRekeningCode": "1008 - Bank Rekening EUR Wise (73)",
                 "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
                 "datum": "2026-05-14T00:00:00Z",
-                "bedrag": 0.0,
+                "bedrag": 0,
                 "boekstuk": "",
                 "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
                 "soort": 6,
@@ -2915,8 +2951,8 @@
                     "index": 0,
                     "tegenRekeningId": 11435893,
                     "btwCode": "GEEN",
-                    "bedrag": 200.0,
-                    "btw": 0.0,
+                    "bedrag": 200,
+                    "btw": 0,
                     "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
                   }
                 ]
@@ -2985,6 +3021,151 @@
             "bearerAuth": []
           }
         ]
+      }
+    },
+    "/api/v4/auth/login": {
+      "post": {
+        "summary": "Authenticate app session with username/password.",
+        "description": "First-login endpoint observed from a fresh iOS app install. Returns a bearer token when login succeeds. If twoFactorCodeRequired is true, an additional app flow is required and is not captured here.",
+        "operationId": "post_api_v4_auth_login",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "$id": {
+                    "type": "string"
+                  },
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "username",
+                  "password"
+                ],
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "username": "<redacted>",
+                "password": "<redacted>"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "loginOk": {
+                      "type": "boolean"
+                    },
+                    "token": {
+                      "type": "string"
+                    },
+                    "twoFactorCodeRequired": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "loginOk": true,
+                  "token": "<redacted>",
+                  "twoFactorCodeRequired": false
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request or failed login"
+          }
+        }
+      }
+    },
+    "/api/appversion/validate": {
+      "post": {
+        "summary": "Validate app/API version compatibility.",
+        "description": "Observed during fresh app login/startup.",
+        "operationId": "post_api_appversion_validate",
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "$id": {
+                    "type": "string"
+                  },
+                  "appVersion": {
+                    "type": "string"
+                  },
+                  "apiVersion": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "appVersion": "3.9.0",
+                "apiVersion": "v4"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "minimumVersion": {
+                      "type": "string"
+                    },
+                    "apiVersions": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "latestVersion": {
+                      "type": "string"
+                    },
+                    "latestVersionReleaseDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "minimumVersion": "2.7.0",
+                  "apiVersions": [
+                    "v4"
+                  ],
+                  "latestVersion": "3.9.0",
+                  "latestVersionReleaseDate": "2025-04-07T00:00:00"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
