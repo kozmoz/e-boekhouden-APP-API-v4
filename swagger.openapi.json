@@ -1,0 +1,2991 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "e-Boekhouden App API v4 (inferred from Charles session)",
+    "version": "4.0-inferred",
+    "description": "Community-inferred OpenAPI specification for the e-Boekhouden app v4 API. Generated from observed network traffic and sanitized for public publication."
+  },
+  "servers": [
+    {
+      "url": "https://appapi.e-boekhouden.nl"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {}
+  },
+  "security": [
+    {
+      "bearerAuth": "REDACTED"
+    }
+  ],
+  "paths": {
+    "/api/v4/bestanden/bestand/{fileId}": {
+      "delete": {
+        "summary": "DELETE /api/v4/bestanden/bestand/{fileId}",
+        "operationId": "delete_api_v4_bestanden_bestand_fileId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                },
+                "example": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      },
+      "get": {
+        "summary": "Get file metadata.",
+        "operationId": "get_api_v4_bestanden_bestand_fileId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "directoryId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "scanStatus": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 82949870,
+                  "naam": "RJJuurlinkHoldingBV-organization-chart-test.pdf",
+                  "datum": "2026-05-22T15:31:22.103",
+                  "directoryId": 44189368,
+                  "scanStatus": 3
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/bestanden/koppel/{linkId}": {
+      "delete": {
+        "summary": "Remove/unlink a file link.",
+        "operationId": "delete_api_v4_bestanden_koppel_linkId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                },
+                "example": true
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "linkId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/administraties": {
+      "get": {
+        "summary": "GET /api/v4/administraties",
+        "operationId": "get_api_v4_administraties",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "administraties": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "bedrijf": {
+                            "type": "string"
+                          },
+                          "naam": {
+                            "type": "string"
+                          },
+                          "plaats": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "administraties": [
+                    {
+                      "id": 113158,
+                      "bedrijf": "Front End Expert B.V.",
+                      "naam": "Juurlink",
+                      "plaats": "Hellendoorn"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/afschriftregels": {
+      "get": {
+        "summary": "GET /api/v4/afschriftregels",
+        "operationId": "get_api_v4_afschriftregels",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "afschriftRegels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "boekDatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "omschrijving": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "afschriftRegels": [
+                    {
+                      "id": 390720446,
+                      "boekDatum": "2025-06-25T00:00:00",
+                      "bedrag": 100.0,
+                      "omschrijving": "Moved EUR from BTW"
+                    },
+                    {
+                      "id": 390720448,
+                      "boekDatum": "2025-06-24T00:00:00",
+                      "bedrag": 1000.0,
+                      "omschrijving": "Moved EUR from BTW"
+                    },
+                    {
+                      "id": 390720450,
+                      "boekDatum": "2025-06-23T00:00:00",
+                      "bedrag": 1600.0,
+                      "omschrijving": "Moved EUR from BTW"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/afschriftregels/{afschriftregelId}": {
+      "get": {
+        "summary": "GET /api/v4/afschriftregels/{afschriftregelId}",
+        "operationId": "get_api_v4_afschriftregels_afschriftregelId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "importDatum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "boekDatum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "rekeningNummer": {
+                      "type": "string"
+                    },
+                    "bedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "omschrijving": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 390720446,
+                  "importDatum": "2025-11-24T22:11:51.51",
+                  "boekDatum": "2025-06-25T00:00:00",
+                  "rekeningNummer": "",
+                  "bedrag": 100.0,
+                  "omschrijving": "Moved EUR from BTW"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "afschriftregelId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/auth/userinfo": {
+      "get": {
+        "summary": "GET /api/v4/auth/userinfo",
+        "operationId": "get_api_v4_auth_userinfo",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "abId": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "username": "REDACTED",
+                        "email": "REDACTED",
+                        "isSuper": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "abId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "abNaam": {
+                      "type": "string"
+                    },
+                    "isAccountant": {
+                      "type": "boolean"
+                    },
+                    "permissies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "permissionKey": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "view": {
+                            "type": "boolean"
+                          },
+                          "create": {
+                            "type": "boolean"
+                          },
+                          "update": {
+                            "type": "boolean"
+                          },
+                          "delete": {
+                            "type": "boolean"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "userSettings": {
+                      "type": "object",
+                      "properties": {
+                        "useMemoriaal": {
+                          "type": "boolean"
+                        },
+                        "useBoekstuk": {
+                          "type": "boolean"
+                        },
+                        "useVoorraad": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "currentAdministratie": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "hasAccountant": {
+                          "type": "boolean"
+                        },
+                        "naam": {
+                          "type": "string"
+                        },
+                        "soort": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "hasRekeningGroepen": {
+                          "type": "boolean"
+                        },
+                        "isBtwPlichtig": {
+                          "type": "boolean"
+                        },
+                        "hasBoekhoudModule": {
+                          "type": "boolean"
+                        },
+                        "hasRekeningschema": {
+                          "type": "boolean"
+                        },
+                        "menHInboxId": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "isProefAbonnement": {
+                          "type": "boolean"
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "valid": true,
+                  "user": {
+                    "id": 119013,
+                    "abId": 113158,
+                    "name": "Juurlink",
+                    "username": "REDACTED",
+                    "email": "REDACTED",
+                    "isSuper": true
+                  },
+                  "abId": 113158,
+                  "abNaam": "Front End Expert B.V.",
+                  "isAccountant": false,
+                  "permissies": [
+                    {
+                      "permissionKey": 0,
+                      "view": true,
+                      "create": true,
+                      "update": true,
+                      "delete": true
+                    },
+                    {
+                      "permissionKey": 1,
+                      "view": true,
+                      "create": true,
+                      "update": true,
+                      "delete": true
+                    },
+                    {
+                      "permissionKey": 2,
+                      "view": true,
+                      "create": true,
+                      "update": true,
+                      "delete": true
+                    }
+                  ],
+                  "userSettings": {
+                    "useMemoriaal": true,
+                    "useBoekstuk": true,
+                    "useVoorraad": false
+                  },
+                  "currentAdministratie": {
+                    "id": 113158,
+                    "hasAccountant": true,
+                    "naam": "Front End Expert B.V.",
+                    "soort": 1,
+                    "hasRekeningGroepen": false,
+                    "isBtwPlichtig": true,
+                    "hasBoekhoudModule": true,
+                    "hasRekeningschema": true,
+                    "menHInboxId": 9111696,
+                    "isProefAbonnement": false
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/bestanden": {
+      "get": {
+        "summary": "List root digital archive folders.",
+        "operationId": "get_api_v4_bestanden",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "isMailEnHerkenInbox": {
+                      "type": "boolean"
+                    },
+                    "childCount": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "directories": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "naam": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "parentDirectoryId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "isMailEnHerkenInbox": {
+                            "type": "boolean"
+                          },
+                          "childCount": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "files": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 0,
+                  "naam": "root",
+                  "isMailEnHerkenInbox": false,
+                  "childCount": 12,
+                  "directories": [
+                    {
+                      "id": 9111696,
+                      "naam": "mail-inbox",
+                      "datum": "2019-12-31T11:54:04",
+                      "parentDirectoryId": 0,
+                      "isMailEnHerkenInbox": true,
+                      "childCount": 0
+                    },
+                    {
+                      "id": 44189368,
+                      "naam": "temp",
+                      "datum": "2024-01-05T10:16:37.943",
+                      "parentDirectoryId": 0,
+                      "isMailEnHerkenInbox": false,
+                      "childCount": 2
+                    },
+                    {
+                      "id": 44907339,
+                      "naam": "2024",
+                      "datum": "2024-01-19T09:38:11.553",
+                      "parentDirectoryId": 0,
+                      "isMailEnHerkenInbox": false,
+                      "childCount": 12
+                    }
+                  ],
+                  "files": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      },
+      "put": {
+        "summary": "Rename/update a file metadata record.",
+        "operationId": "put_api_v4_bestanden",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "directoryId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "scanStatus": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 82949870,
+                  "naam": "RJJuurlinkHoldingBV-organization-chart-test.pdf",
+                  "datum": "2026-05-22T15:31:22.103",
+                  "directoryId": 44189368,
+                  "scanStatus": 3
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "naam": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "id": 82949870,
+                "naam": "RJJuurlinkHoldingBV-organization-chart-test.pdf"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/download/{fileId}": {
+      "get": {
+        "summary": "Download file bytes.",
+        "operationId": "get_api_v4_bestanden_download_fileId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/bestanden/{directoryId}": {
+      "get": {
+        "summary": "List folder contents.",
+        "operationId": "get_api_v4_bestanden_directoryId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "parentDirectoryId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "isMailEnHerkenInbox": {
+                      "type": "boolean"
+                    },
+                    "childCount": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "directories": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "naam": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "parentDirectoryId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "isMailEnHerkenInbox": {
+                            "type": "boolean"
+                          },
+                          "childCount": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "files": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 75161614,
+                  "naam": "2026",
+                  "datum": "2025-12-24T14:24:51.413",
+                  "parentDirectoryId": 0,
+                  "isMailEnHerkenInbox": false,
+                  "childCount": 5,
+                  "directories": [
+                    {
+                      "id": 75161630,
+                      "naam": "2026-01",
+                      "datum": "2025-12-24T14:25:10.243",
+                      "parentDirectoryId": 75161614,
+                      "isMailEnHerkenInbox": false,
+                      "childCount": 42
+                    },
+                    {
+                      "id": 76837913,
+                      "naam": "2026-02",
+                      "datum": "2026-01-21T19:36:34.247",
+                      "parentDirectoryId": 75161614,
+                      "isMailEnHerkenInbox": false,
+                      "childCount": 23
+                    },
+                    {
+                      "id": 78790137,
+                      "naam": "2026-03",
+                      "datum": "2026-03-02T14:35:30.333",
+                      "parentDirectoryId": 75161614,
+                      "isMailEnHerkenInbox": false,
+                      "childCount": 18
+                    }
+                  ],
+                  "files": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "directoryId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/btwcodes/inkoop": {
+      "get": {
+        "summary": "GET /api/v4/btwcodes/inkoop",
+        "operationId": "get_api_v4_btwcodes_inkoop",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "btwCodes": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "omschrijving": {
+                            "type": "string"
+                          },
+                          "rekenpercentage": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "percentage": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "percentageDisplayName": {
+                            "type": "string"
+                          },
+                          "einddatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "volgorde": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "btwCodes": [
+                    {
+                      "code": "LAAG_INK",
+                      "omschrijving": "Btw laag 6%",
+                      "rekenpercentage": 6.0,
+                      "percentage": 6.0,
+                      "percentageDisplayName": "6%",
+                      "einddatum": "2019-01-01T00:00:00",
+                      "volgorde": 20
+                    },
+                    {
+                      "code": "LAAG_INK_9",
+                      "omschrijving": "Btw laag 9%",
+                      "rekenpercentage": 9.0,
+                      "percentage": 9.0,
+                      "percentageDisplayName": "9%",
+                      "volgorde": 21
+                    },
+                    {
+                      "code": "HOOG_INK_21",
+                      "omschrijving": "Btw hoog 21%",
+                      "rekenpercentage": 21.0,
+                      "percentage": 21.0,
+                      "percentageDisplayName": "21%",
+                      "volgorde": 31
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/dashboard/saldo/betalingsmiddelen": {
+      "get": {
+        "summary": "GET /api/v4/dashboard/saldo/betalingsmiddelen",
+        "operationId": "get_api_v4_dashboard_saldo_betalingsmiddelen",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "saldoBetalingsmiddelen": {
+                      "type": "number",
+                      "format": "double"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "saldoBetalingsmiddelen": 48466.53
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/dashboard/saldo/openposten": {
+      "get": {
+        "summary": "GET /api/v4/dashboard/saldo/openposten",
+        "operationId": "get_api_v4_dashboard_saldo_openposten",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "openPostenTeOntvangen": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "openPostenTeBetalen": {
+                      "type": "number",
+                      "format": "double"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "openPostenTeOntvangen": 15681.6,
+                  "openPostenTeBetalen": 1300.78
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/dashboard/winstverlies": {
+      "get": {
+        "summary": "GET /api/v4/dashboard/winstverlies",
+        "operationId": "get_api_v4_dashboard_winstverlies",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "thisYear": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "saldo": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "jaar": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "maand": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "previousYear": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "saldo": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "jaar": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "maand": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "thisYear": [
+                    {
+                      "saldo": 7652.19,
+                      "jaar": 2025,
+                      "maand": 12
+                    },
+                    {
+                      "saldo": 25548.38,
+                      "jaar": 2026,
+                      "maand": 1
+                    },
+                    {
+                      "saldo": 11555.84,
+                      "jaar": 2026,
+                      "maand": 2
+                    }
+                  ],
+                  "previousYear": [
+                    {
+                      "saldo": 14578.83,
+                      "jaar": 2024,
+                      "maand": 12
+                    },
+                    {
+                      "saldo": 4729.49,
+                      "jaar": 2025,
+                      "maand": 1
+                    },
+                    {
+                      "saldo": 24242.09,
+                      "jaar": 2025,
+                      "maand": 2
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/feedback/shouldask": {
+      "get": {
+        "summary": "GET /api/v4/feedback/shouldask",
+        "operationId": "get_api_v4_feedback_shouldask",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "shouldAsk": {
+                      "type": "boolean"
+                    },
+                    "latestFeedbackDateTime": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "shouldAsk": false,
+                  "latestFeedbackDateTime": "2026-05-22T17:59:46.123456+02:00"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/grootboekrekeningen/mutaties/{mutatieId}/pickerlist": {
+      "get": {
+        "summary": "GET /api/v4/grootboekrekeningen/mutaties/{mutatieId}/pickerlist",
+        "operationId": "get_api_v4_grootboekrekeningen_mutaties_mutatieId_pickerlist",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          },
+                          "displayName": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "items": [
+                    {
+                      "id": "123456",
+                      "displayName": "1000 - Kas"
+                    },
+                    {
+                      "id": "123456",
+                      "displayName": "1008 - Bank Rekening EUR Wise (73)"
+                    },
+                    {
+                      "id": "123456",
+                      "displayName": "1009 - Bank Rekening EUR Rabobank (82) (opgeheven)"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "mutatieId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/mutaties/btwperregel": {
+      "get": {
+        "summary": "GET /api/v4/mutaties/btwperregel",
+        "operationId": "get_api_v4_mutaties_btwperregel",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "value": {
+                      "type": "boolean"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "value": false
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ]
+      }
+    },
+    "/api/v4/mutaties/{mutatieId}": {
+      "get": {
+        "summary": "GET /api/v4/mutaties/{mutatieId}",
+        "operationId": "get_api_v4_mutaties_mutatieId",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mutatieRegels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "bedragInclusief": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "bedragExclusief": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "btwCodeDisplayName": {
+                            "type": "string"
+                          },
+                          "tegenrekeningDisplayName": {
+                            "type": "string"
+                          },
+                          "index": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "tegenRekeningId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "btwCode": {
+                            "type": "string"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "btw": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "omschrijving": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "relatieId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "grootboekRekeningId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "isInclusiefBtw": {
+                      "type": "boolean"
+                    },
+                    "termijnInDagen": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "mutatieNummer": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "factuurNummer": {
+                      "type": "string"
+                    },
+                    "grootboekRekeningOmschrijving": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "bedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "boekstuk": {
+                      "type": "string"
+                    },
+                    "omschrijving": {
+                      "type": "string"
+                    },
+                    "soort": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "mutatieRegels": [
+                    {
+                      "bedragInclusief": 200.0,
+                      "bedragExclusief": 200.0,
+                      "btwCodeDisplayName": "Geen btw",
+                      "tegenrekeningDisplayName": "9010 - Managements fee",
+                      "index": 0,
+                      "tegenRekeningId": 11435893,
+                      "btwCode": "GEEN",
+                      "bedrag": 200.0,
+                      "btw": 0.0,
+                      "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
+                    }
+                  ],
+                  "relatieId": 0,
+                  "grootboekRekeningId": 27204945,
+                  "isInclusiefBtw": true,
+                  "termijnInDagen": 0,
+                  "id": 4443958197,
+                  "mutatieNummer": 9903,
+                  "factuurNummer": "",
+                  "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
+                  "datum": "2026-05-14T00:00:00",
+                  "bedrag": 0.0,
+                  "boekstuk": "",
+                  "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                  "soort": 6
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "parameters": [
+          {
+            "name": "mutatieId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ]
+      }
+    },
+    "/api/v4/auth/renew": {
+      "post": {
+        "summary": "Authenticate/renew app session token.",
+        "operationId": "post_api_v4_auth_renew",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "token": "REDACTED"
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "token": "REDACTED"
+                }
+              }
+            }
+          }
+        },
+        "security": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": "REDACTED",
+                  "password": "REDACTED",
+                  "previousToken": "REDACTED"
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "username": "REDACTED",
+                "password": "REDACTED",
+                "previousToken": "REDACTED"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/bulkMove": {
+      "post": {
+        "summary": "Move one or more files/folders to another folder.",
+        "operationId": "post_api_v4_bestanden_bulkMove",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "updatedIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "integer",
+                        "format": "int64"
+                      }
+                    },
+                    "notFoundIds": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "errorMessages": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "successMessages": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "updatedIds": [
+                    82950746
+                  ],
+                  "notFoundIds": [],
+                  "errorMessages": [],
+                  "successMessages": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "moveToFolderId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "itemsToMove": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "moveToFolderId": 82954035,
+                "itemsToMove": [
+                  82950746
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/directory": {
+      "post": {
+        "summary": "Create a folder/directory under a parent folder.",
+        "operationId": "post_api_v4_bestanden_directory",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "parentDirectoryId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "isMailEnHerkenInbox": {
+                      "type": "boolean"
+                    },
+                    "childCount": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "directories": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "files": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "id": 82954035,
+                  "naam": "2026-06",
+                  "datum": "2026-05-22T17:59:45.98",
+                  "parentDirectoryId": 75161614,
+                  "isMailEnHerkenInbox": false,
+                  "childCount": 0,
+                  "directories": [],
+                  "files": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "parentDirectoryId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "naam": {
+                    "type": "string"
+                  },
+                  "setAsMenHInbox": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "id": 0,
+                "parentDirectoryId": 75161614,
+                "naam": "2026-06",
+                "setAsMenHInbox": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/gekoppeld": {
+      "post": {
+        "summary": "List files linked to an entity.",
+        "operationId": "post_api_v4_bestanden_gekoppeld",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "files": {
+                      "type": "array",
+                      "items": {}
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "files": []
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "soort": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "koppelId": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "soort": 1,
+                "koppelId": 9903
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/koppel": {
+      "post": {
+        "summary": "Link/attach an existing file to an entity such as a mutation.",
+        "operationId": "post_api_v4_bestanden_koppel",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fileId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "koppelId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "naam": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "fileId": 82949870,
+                  "koppelId": 9903,
+                  "naam": "RJJuurlinkHoldingBV-organization-chart-test.pdf",
+                  "datum": "2026-05-22T15:31:22.103"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "soort": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "koppelId": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "fileId": 82949870,
+                "soort": 1,
+                "koppelId": 9903
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/bestanden/upload": {
+      "post": {
+        "summary": "Upload a file into a directory. File body is base64 in `data`.",
+        "operationId": "post_api_v4_bestanden_upload",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "originalFileName": {
+                      "type": "string"
+                    },
+                    "saved": {
+                      "type": "boolean"
+                    },
+                    "scanned": {
+                      "type": "boolean"
+                    },
+                    "file": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "naam": {
+                          "type": "string"
+                        },
+                        "datum": {
+                          "type": "string",
+                          "format": "date-time"
+                        },
+                        "directoryId": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "scanStatus": {
+                          "type": "integer",
+                          "format": "int64"
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "originalFileName": "Beleggingsanalyse Shell plc (LSE).pdf",
+                  "saved": true,
+                  "scanned": false,
+                  "file": {
+                    "id": 82954037,
+                    "naam": "Beleggingsanalyse Shell plc (LSE).pdf",
+                    "datum": "2026-05-22T18:00:04.3",
+                    "directoryId": 82954035,
+                    "scanStatus": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fileName": {
+                    "type": "string"
+                  },
+                  "data": {
+                    "type": "string"
+                  },
+                  "directoryId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "scan": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "fileName": "Beleggingsanalyse Shell plc (LSE).pdf",
+                "data": "<base64-file-content>",
+                "directoryId": 82954035,
+                "scan": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/mutaties/filter": {
+      "post": {
+        "summary": "POST /api/v4/mutaties/filter",
+        "operationId": "post_api_v4_mutaties_filter",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "currentStartPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "currentPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "hasMoreRows": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "mutatieNummer": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "factuurNummer": {
+                            "type": "string"
+                          },
+                          "grootboekRekeningCode": {
+                            "type": "string"
+                          },
+                          "grootboekRekeningOmschrijving": {
+                            "type": "string"
+                          },
+                          "datum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "shortMutatieSoortDisplayValue": {
+                            "type": "string"
+                          },
+                          "omschrijving": {
+                            "type": "string"
+                          },
+                          "soort": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "currentStartPage": 1,
+                  "currentPage": 1,
+                  "pageSize": 71,
+                  "hasMoreRows": true,
+                  "items": [
+                    {
+                      "id": 4443958197,
+                      "mutatieNummer": 9903,
+                      "factuurNummer": "",
+                      "grootboekRekeningCode": "1008",
+                      "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
+                      "datum": "2026-05-14T00:00:00",
+                      "bedrag": 200.0,
+                      "shortMutatieSoortDisplayValue": "Geld uit",
+                      "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                      "soort": 6
+                    },
+                    {
+                      "id": 4443958032,
+                      "mutatieNummer": 9902,
+                      "factuurNummer": "",
+                      "grootboekRekeningCode": "1008",
+                      "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
+                      "datum": "2026-05-14T00:00:00",
+                      "bedrag": 1150.0,
+                      "shortMutatieSoortDisplayValue": "Geld uit",
+                      "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                      "soort": 6
+                    },
+                    {
+                      "id": 4443957841,
+                      "mutatieNummer": 9901,
+                      "factuurNummer": "",
+                      "grootboekRekeningCode": "1008",
+                      "grootboekRekeningOmschrijving": "Bank Rekening EUR Wise (73)",
+                      "datum": "2026-05-14T00:00:00",
+                      "bedrag": 6000.0,
+                      "shortMutatieSoortDisplayValue": "Geld uit",
+                      "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                      "soort": 6
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "period": {
+                    "type": "object",
+                    "properties": {
+                      "startDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "endDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      }
+                    },
+                    "additionalProperties": true
+                  },
+                  "soort": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "sortBy": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "sortDirection": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "page": 1,
+                "pageSize": 71,
+                "period": {
+                  "$id": "2",
+                  "startDate": "1976-05-21T23:00:00Z",
+                  "endDate": "2076-05-21T23:00:00Z"
+                },
+                "soort": 0,
+                "sortBy": 0,
+                "sortDirection": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/openposten/crediteuren": {
+      "post": {
+        "summary": "POST /api/v4/openposten/crediteuren",
+        "operationId": "post_api_v4_openposten_crediteuren",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalBedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "totalOpenstaandBedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "currentStartPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "currentPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "hasMoreRows": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mutatieDatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "openstaandBedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "vervaldatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "betaald": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "mutatieNummer": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "mutatieFactuurNummer": {
+                            "type": "string"
+                          },
+                          "mutatieTermijn": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "mutatieOmschrijving": {
+                            "type": "string"
+                          },
+                          "relatieCode": {
+                            "type": "string"
+                          },
+                          "relatieId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "bedrijf": {
+                            "type": "string"
+                          },
+                          "factuurId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "bijlageCount": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "totalBedrag": 2269.89,
+                  "totalOpenstaandBedrag": 1300.78,
+                  "currentStartPage": 1,
+                  "currentPage": 1,
+                  "pageSize": 71,
+                  "hasMoreRows": false,
+                  "items": [
+                    {
+                      "mutatieDatum": "2024-12-22T00:00:00",
+                      "bedrag": 9.99,
+                      "openstaandBedrag": 9.99,
+                      "vervaldatum": "2025-02-20T00:00:00",
+                      "betaald": 0.0,
+                      "mutatieNummer": 7925,
+                      "mutatieFactuurNummer": "123456",
+                      "mutatieTermijn": 0,
+                      "mutatieOmschrijving": "Apple",
+                      "relatieCode": "Apple",
+                      "relatieId": 9100116,
+                      "bedrijf": "Apple",
+                      "factuurId": 0,
+                      "bijlageCount": 1
+                    },
+                    {
+                      "mutatieDatum": "2025-01-13T00:00:00",
+                      "bedrag": 70.88,
+                      "openstaandBedrag": -71.76,
+                      "vervaldatum": "2025-01-27T00:00:00",
+                      "betaald": 142.64,
+                      "mutatieNummer": 9347,
+                      "mutatieFactuurNummer": "J683DU",
+                      "mutatieTermijn": 0,
+                      "mutatieOmschrijving": "Airlink",
+                      "relatieCode": "AIR",
+                      "relatieId": 70018342,
+                      "bedrijf": "Airlink",
+                      "factuurId": 0,
+                      "bijlageCount": 1
+                    },
+                    {
+                      "mutatieDatum": "2025-01-13T00:00:00",
+                      "bedrag": 70.88,
+                      "openstaandBedrag": -70.98,
+                      "vervaldatum": "2025-01-27T00:00:00",
+                      "betaald": 141.86,
+                      "mutatieNummer": 9348,
+                      "mutatieFactuurNummer": "J683DU1",
+                      "mutatieTermijn": 0,
+                      "mutatieOmschrijving": "Airlink",
+                      "relatieCode": "AIR",
+                      "relatieId": 70018342,
+                      "bedrijf": "Airlink",
+                      "factuurId": 0,
+                      "bijlageCount": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "includePaid": {
+                    "type": "boolean"
+                  },
+                  "sortBy": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "sortDirection": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "page": 1,
+                "pageSize": 71,
+                "includePaid": false,
+                "sortBy": 0,
+                "sortDirection": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/openposten/debiteuren": {
+      "post": {
+        "summary": "POST /api/v4/openposten/debiteuren",
+        "operationId": "post_api_v4_openposten_debiteuren",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "totalBedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "totalOpenstaandBedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "currentStartPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "currentPage": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "pageSize": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "hasMoreRows": {
+                      "type": "boolean"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "mutatieDatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "openstaandBedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "vervaldatum": {
+                            "type": "string",
+                            "format": "date-time"
+                          },
+                          "betaald": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "mutatieNummer": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "mutatieFactuurNummer": {
+                            "type": "string"
+                          },
+                          "mutatieTermijn": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "mutatieOmschrijving": {
+                            "type": "string"
+                          },
+                          "relatieCode": {
+                            "type": "string"
+                          },
+                          "relatieId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "bedrijf": {
+                            "type": "string"
+                          },
+                          "factuurId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "bijlageCount": {
+                            "type": "integer",
+                            "format": "int64"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "totalBedrag": 15681.6,
+                  "totalOpenstaandBedrag": 15681.6,
+                  "currentStartPage": 1,
+                  "currentPage": 1,
+                  "pageSize": 71,
+                  "hasMoreRows": false,
+                  "items": [
+                    {
+                      "mutatieDatum": "2026-05-07T00:00:00",
+                      "bedrag": 15681.6,
+                      "openstaandBedrag": 15681.6,
+                      "vervaldatum": "2026-06-16T00:00:00",
+                      "betaald": 0.0,
+                      "mutatieNummer": 9885,
+                      "mutatieFactuurNummer": "123456",
+                      "mutatieTermijn": 0,
+                      "mutatieOmschrijving": "Uren DUO Dienst Uitvoering Onderwijs – Periode apr",
+                      "relatieCode": "DUO",
+                      "relatieId": 54596823,
+                      "bedrijf": "Dienst Uitvoering Onderwijs",
+                      "factuurId": 0,
+                      "bijlageCount": 1
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "page": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "pageSize": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "includePaid": {
+                    "type": "boolean"
+                  },
+                  "sortBy": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "sortDirection": {
+                    "type": "integer",
+                    "format": "int64"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "page": 1,
+                "pageSize": 71,
+                "includePaid": false,
+                "sortBy": 0,
+                "sortDirection": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/pushmessage/token": "REDACTED",
+    "/api/v4/winstverlies/overzicht": {
+      "post": {
+        "summary": "POST /api/v4/winstverlies/overzicht",
+        "operationId": "post_api_v4_winstverlies_overzicht",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "totalVerlies": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "totalWinst": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "saldoRegel": {
+                      "type": "object",
+                      "properties": {
+                        "grootboekId": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "grootboekRekeningCode": {
+                          "type": "string"
+                        },
+                        "grootboekRekeningOmschrijving": {
+                          "type": "string"
+                        },
+                        "bedragVerlies": {
+                          "type": "number",
+                          "format": "double"
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "winstEnVerliesGroups": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "winstEnVerliesRegels": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "grootboekId": {
+                                  "type": "integer",
+                                  "format": "int64"
+                                },
+                                "grootboekRekeningCode": {
+                                  "type": "string"
+                                },
+                                "grootboekRekeningOmschrijving": {
+                                  "type": "string"
+                                },
+                                "bedragVerlies": {
+                                  "type": "number",
+                                  "format": "double"
+                                }
+                              },
+                              "additionalProperties": true
+                            }
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "startDate": "2026-01-01T00:00:00Z",
+                  "endDate": "2026-12-31T00:00:00Z",
+                  "totalVerlies": 68158.79,
+                  "totalWinst": 68158.79,
+                  "saldoRegel": {
+                    "grootboekId": 0,
+                    "grootboekRekeningCode": "",
+                    "grootboekRekeningOmschrijving": "Saldo winst",
+                    "bedragVerlies": 34949.61
+                  },
+                  "winstEnVerliesGroups": [
+                    {
+                      "winstEnVerliesRegels": [
+                        {
+                          "grootboekId": 12790318,
+                          "grootboekRekeningCode": "0152",
+                          "grootboekRekeningOmschrijving": "Accu",
+                          "bedragVerlies": 230.52
+                        },
+                        {
+                          "grootboekId": 9381419,
+                          "grootboekRekeningCode": "1660",
+                          "grootboekRekeningOmschrijving": "Belasting",
+                          "bedragVerlies": 8640.0
+                        },
+                        {
+                          "grootboekId": 9865419,
+                          "grootboekRekeningCode": "4100",
+                          "grootboekRekeningOmschrijving": "Managementvergoeding",
+                          "bedragVerlies": 5300.0
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "showGroups": {
+                    "type": "boolean"
+                  },
+                  "startDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "endDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "showGroups": false,
+                "startDate": "2026-01-01T00:00:00Z",
+                "endDate": "2026-12-31T00:00:00Z"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v4/mutaties": {
+      "put": {
+        "summary": "PUT /api/v4/mutaties",
+        "operationId": "put_api_v4_mutaties",
+        "responses": {
+          "200": {
+            "description": "Captured successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mutatieRegels": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "bedragInclusief": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "bedragExclusief": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "btwCodeDisplayName": {
+                            "type": "string"
+                          },
+                          "tegenrekeningDisplayName": {
+                            "type": "string"
+                          },
+                          "index": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "tegenRekeningId": {
+                            "type": "integer",
+                            "format": "int64"
+                          },
+                          "btwCode": {
+                            "type": "string"
+                          },
+                          "bedrag": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "btw": {
+                            "type": "number",
+                            "format": "double"
+                          },
+                          "omschrijving": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": true
+                      }
+                    },
+                    "relatieId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "grootboekRekeningId": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "isInclusiefBtw": {
+                      "type": "boolean"
+                    },
+                    "termijnInDagen": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "id": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "mutatieNummer": {
+                      "type": "integer",
+                      "format": "int64"
+                    },
+                    "factuurNummer": {
+                      "type": "string"
+                    },
+                    "grootboekRekeningOmschrijving": {
+                      "type": "string"
+                    },
+                    "datum": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "bedrag": {
+                      "type": "number",
+                      "format": "double"
+                    },
+                    "boekstuk": {
+                      "type": "string"
+                    },
+                    "omschrijving": {
+                      "type": "string"
+                    },
+                    "soort": {
+                      "type": "integer",
+                      "format": "int64"
+                    }
+                  },
+                  "additionalProperties": true
+                },
+                "example": {
+                  "mutatieRegels": [
+                    {
+                      "bedragInclusief": 200.0,
+                      "bedragExclusief": 200.0,
+                      "btwCodeDisplayName": "Geen btw",
+                      "tegenrekeningDisplayName": "9010 - Managements fee",
+                      "index": 0,
+                      "tegenRekeningId": 11435893,
+                      "btwCode": "GEEN",
+                      "bedrag": 200.0,
+                      "btw": 0.0,
+                      "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
+                    }
+                  ],
+                  "relatieId": 0,
+                  "grootboekRekeningId": 27204945,
+                  "isInclusiefBtw": true,
+                  "termijnInDagen": 0,
+                  "id": 4453608317,
+                  "mutatieNummer": 9903,
+                  "factuurNummer": "",
+                  "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
+                  "datum": "2026-05-14T00:00:00",
+                  "bedrag": 0.0,
+                  "boekstuk": "",
+                  "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                  "soort": 6
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": "REDACTED"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "mutatieNummer": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "factuurNummer": {
+                    "type": "string"
+                  },
+                  "grootboekRekeningCode": {
+                    "type": "string"
+                  },
+                  "grootboekRekeningOmschrijving": {
+                    "type": "string"
+                  },
+                  "datum": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "bedrag": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "boekstuk": {
+                    "type": "string"
+                  },
+                  "omschrijving": {
+                    "type": "string"
+                  },
+                  "soort": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "grootboekRekeningId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "isInclusiefBtw": {
+                    "type": "boolean"
+                  },
+                  "termijnInDagen": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "mutatieRegels": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "index": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "tegenRekeningId": {
+                          "type": "integer",
+                          "format": "int64"
+                        },
+                        "btwCode": {
+                          "type": "string"
+                        },
+                        "bedrag": {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        "btw": {
+                          "type": "number",
+                          "format": "double"
+                        },
+                        "omschrijving": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  }
+                },
+                "additionalProperties": true
+              },
+              "example": {
+                "$id": "1",
+                "id": 4443958197,
+                "mutatieNummer": 9903,
+                "factuurNummer": "",
+                "grootboekRekeningCode": "1008 - Bank Rekening EUR Wise (73)",
+                "grootboekRekeningOmschrijving": "1008 - Bank Rekening EUR Wise (73)",
+                "datum": "2026-05-14T00:00:00Z",
+                "bedrag": 0.0,
+                "boekstuk": "",
+                "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend",
+                "soort": 6,
+                "grootboekRekeningId": 27204945,
+                "isInclusiefBtw": true,
+                "termijnInDagen": 0,
+                "mutatieRegels": [
+                  {
+                    "$id": "2",
+                    "index": 0,
+                    "tegenRekeningId": 11435893,
+                    "btwCode": "GEEN",
+                    "bedrag": 200.0,
+                    "btw": 0.0,
+                    "omschrijving": "Geld gestuurd naar R.J. JUURLINK HOLDING B.V. Dividend"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/bestanden/search": {
+      "get": {
+        "summary": "Search files/folders using free text",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free text search query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Search results"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/mutaties/search": {
+      "get": {
+        "summary": "Search mutations",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free text search query"
+          },
+          {
+            "name": "mutatienummer",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Mutation number"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Mutation search results"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  }
+}
